@@ -87,4 +87,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 4;
+}
+
+#plus-icon {
+    animation-duration: 0.2s;
+}
+
+.plus-to-x {
+    animation: plus-to-x-anim;
+}
+
+.x-to-plus {
+    animation: x-to-plus-anim;
+}
+
+@keyframes plus-to-x-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes x-to-plus-anim {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
