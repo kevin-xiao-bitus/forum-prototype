@@ -77,8 +77,8 @@
 }
 
 .create-post-button {
-    height: 32px;
-    width: 32px;
+    min-height: 32px;
+    min-width: 32px;
     margin-right: 15px;
     margin-left: 15px;
     border-radius: 16px;
@@ -118,4 +118,8 @@
     100% {
         transform: rotate(0deg);
     }
+}
+
+button {
+    cursor: pointer;
 }

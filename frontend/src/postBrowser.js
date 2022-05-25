@@ -5,7 +5,6 @@ import CreatePostOverlay from "./components/createOverlay";
 
 const url = "http://localhost:3001";
 
-
 function PostBrowser() {
     const plusIconRef = useRef();
     var plusIcon = plusIconRef.current;
@@ -59,7 +58,7 @@ function PostBrowser() {
                     })}
                 </div>
             </div>
-            <CreatePostOverlay show={showOverlay} />
+            <CreatePostOverlay show={showOverlay} url={url}/>
         </>
     );
 }

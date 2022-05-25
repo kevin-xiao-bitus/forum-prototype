@@ -5,7 +5,7 @@ $border-color: rgb(119, 117, 117);
 $bordius: 11px;
 
 .post-container {
-    min-height: 70px;
+    min-height: 80px;
     background-color: white;
 
     border: 0.5px;
@@ -83,6 +83,10 @@ $bordius: 11px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.load-post-button:hover {
+    cursor: pointer;
 }
 
 .pb-slidein {
