@@ -85,7 +85,6 @@ function PostBrowser() {
                         </button>
                         {(showClearButton) ? (
                             <button className="search-clear-button" onClick={() => {
-                                dispatchWhitelist({filter: ""});
                                 searchBar.current.value = "";
                                 setShowClearButton(false);
                             }}>
