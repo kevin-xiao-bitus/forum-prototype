@@ -17,14 +17,12 @@ $bordius: 11px;
     margin-right: $base-margin;
     margin-top: calc($base-margin / 1.2);
     margin-bottom: calc($base-margin / 1.2);
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
     overflow: hidden;
-
     position: relative;
+    flex-shrink: 0;
 }
 
 .post-title {
@@ -41,8 +39,6 @@ $bordius: 11px;
     border-color: $border-color;
     border-bottom-style: solid;
     border-bottom-width: 0.5px;
-    
-    min-height: 45px;
 
     display: flex;
     flex-direction: column;
@@ -61,10 +57,15 @@ $bordius: 11px;
     margin-bottom: 1px;
 }
 
-.post-content {
+.post-content-container {
     margin: 0px;
     padding: 5px;
     background-color: rgb(244, 244, 249);
+    max-height: 125px;
+}
+
+.post-content {
+    margin: 0;
 }
 
 .load-post-button {
@@ -91,6 +92,7 @@ $bordius: 11px;
 
 .pb-slidein {
     animation-name: post-button-in-animation;
+    right: 0px;
 }
 
 @keyframes post-button-in-animation {
@@ -104,6 +106,7 @@ $bordius: 11px;
 
 .pb-slideout {
     animation-name: post-button-out-animation;
+    right: -50px;
 }
 
 @keyframes post-button-out-animation {
@@ -117,6 +120,7 @@ $bordius: 11px;
 
 .button-trigger {
     position: absolute;
+    z-index: 3;
     height: 100%;
     width: 50px;
     right: 0px;
@@ -126,4 +130,13 @@ $bordius: 11px;
 .right-arrow {
     stroke-width: 3px;
     stroke: rgb(56, 155, 221);
+}
+
+.overflow-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    box-shadow: inset 0 -11px 9px 0 rgb(244, 244, 249);
 }

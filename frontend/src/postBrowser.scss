@@ -44,7 +44,7 @@
     border-width: 1px;
     flex-grow: 1;
     padding-left: 15px;
-
+    padding-right: 30px;
     font-size: 20px;
 }
 
@@ -62,6 +62,7 @@
     flex-grow: 1;
     margin-left: 15px;
     margin-right: 15px;
+    position: relative;
 }
 
 .search-button {
@@ -96,10 +97,12 @@
 
 .plus-to-x {
     animation: plus-to-x-anim;
+    transform: rotate(45deg)
 }
 
 .x-to-plus {
     animation: x-to-plus-anim;
+    transform: rotate(0deg)
 }
 
 @keyframes plus-to-x-anim {
@@ -122,4 +125,17 @@
 
 button {
     cursor: pointer;
+}
+
+.search-clear-button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    position: absolute;
+    right: 50px;
 }

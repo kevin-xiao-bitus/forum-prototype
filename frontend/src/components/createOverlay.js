@@ -53,7 +53,7 @@ function CreatePostOverlay( { url} ) {
                     <input ref={title} type="text" className="post-title-input" placeholder="Title"></input>
                     <p ref={titleErrors} className="create-post-helper-text"></p>
                 </div>
-                <div className="create-post-text-containers post-content-container">
+                <div className="create-post-text-containers create-post-content-container">
                     <textarea ref={content} placeholder="Content" className="post-content-input"></textarea>
                     <p ref={contentErrors} className="create-post-helper-text"></p>
                 </div>
