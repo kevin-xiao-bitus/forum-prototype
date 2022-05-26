@@ -26,7 +26,7 @@ function Post ({post}) {
         <div className="post-container" onClick={showButton} onMouseLeave={hideButton}>
             <div className="post-topbar">
                 <p className="post-title">{post.title}</p>
-                <p className="post-date">{dateToString(post.date)}</p>
+                <p className="post-date">{dateToString(post.time)}</p>
             </div>
             <div className="post-content">
                 {post.content}
@@ -49,8 +49,9 @@ function hideButtonAnimate (ref) {
     ref.current.classList.remove("pb-slidein");
 }
 
-function dateToString (date) {
-    return (date.month + "/" + date.day + "/" + date.year);
+function dateToString (time) {
+    const today = new Date(time);
+    return (today.getMonth()) + 1 + "/" + today.getDate() + "/" + today.getFullYear();
 }
 
 export default Post;

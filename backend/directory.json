@@ -2,31 +2,19 @@
     "Posts": [
         {
             "title": "first post ever",
-            "date": {
-                "month": 5,
-                "day": 4,
-                "year": 2020
-            },
+            "time": 1614585600000,
             "poster": "kevin",
             "content": "lorem"
         },
         {
             "title": "second post",
-            "date": {
-                "month": 6,
-                "day": 26,
-                "year": 2020
-            },
+            "time": 1620284400000,
             "poster": "dev",
             "content": "ipsum"
         },
         {
             "title": "third post",
-            "date": {
-                "month": 11,
-                "day": 15,
-                "year": 2020
-            },
+            "time": 1649487600000,
             "poster": "admin",
             "content": "dolor sit amet"
         }
