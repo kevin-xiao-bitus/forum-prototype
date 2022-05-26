@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./createOverlay.scss";
 
-function CreatePostOverlay( {show, url} ) {
+function CreatePostOverlay( { url} ) {
     const title = useRef();
     const content = useRef();
     const titleErrors = useRef();
@@ -10,25 +10,20 @@ function CreatePostOverlay( {show, url} ) {
     function uploadPost() {
         if (checkErrors()) {
             const date = new Date();
-            console.log(date);
-            console.log(date.getTime());
-            console.log(new Date(date.getTime()));
             const data = {
                 title: title.current.value,
-                date: {
-                    month: 11,
-                    day: 15,
-                    year: 2020
-                },
-                poster: "admin",
-                content: "dolor sit amet"
+                time: date.getTime(),
+                poster: "anon",
+                content: content.current.value
             }
-            // fetch(url + "/uploadPost", {
-            //     mode: "POST",
-            //     method: "cors",
-            //     headers: {"Content-Type": "application/json"},
-            //     body: JSON.stringify(data)
-            // })
+            fetch(url + "/uploadPost", {
+                method: "POST",
+                mode: "cors",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(data)
+            }).catch(err => {
+                if (err) console.log(err);
+            })
         }
     }
 
@@ -51,27 +46,23 @@ function CreatePostOverlay( {show, url} ) {
         return valid;
     }
 
-    if (show) {
-        return(
-            <div className="overlay">
-                <div className="create-post-container">
-                    <div className="create-post-text-containers">
-                        <input ref={title} type="text" className="post-title-input" placeholder="Title"></input>
-                        <p ref={titleErrors} className="create-post-helper-text"></p>
-                    </div>
-                    <div className="create-post-text-containers post-content-container">
-                        <textarea ref={content} placeholder="Content" className="post-content-input"></textarea>
-                        <p ref={contentErrors} className="create-post-helper-text"></p>
-                    </div>
-                    <div className="submit-post-button-container">
-                        <button className="post-button" onClick={uploadPost}>Post</button>
-                    </div>
+    return(
+        <div className="overlay">
+            <div className="create-post-container">
+                <div className="create-post-text-containers">
+                    <input ref={title} type="text" className="post-title-input" placeholder="Title"></input>
+                    <p ref={titleErrors} className="create-post-helper-text"></p>
+                </div>
+                <div className="create-post-text-containers post-content-container">
+                    <textarea ref={content} placeholder="Content" className="post-content-input"></textarea>
+                    <p ref={contentErrors} className="create-post-helper-text"></p>
+                </div>
+                <div className="submit-post-button-container">
+                    <button className="post-button" onClick={uploadPost}>Post</button>
                 </div>
             </div>
+        </div>
         );
-    } else {
-        return;
     }
-}
 
 export default CreatePostOverlay;

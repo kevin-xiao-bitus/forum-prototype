@@ -15,6 +15,11 @@ server.get("/getPosts", (req, res) => {
     res.send(responseData);
 });
 
+server.post("/uploadPost", (req, res) => {
+    const data = req.body;
+    console.log(data);
+})
+
 http.listen(port, () => {
     console.log("Server listening on port", port);
 });
