@@ -10,9 +10,26 @@ const fs = require("fs");
 server.use(bodyParser.json());
 server.use(cors());
 
-server.get("/getPosts", (req, res) => {
-    const responseData = JSON.stringify(directory);
-    res.send(responseData);
+server.post("/getPosts", (req, res) => {
+    const query = req.body.keyword;
+    const posts = directory.Posts;
+    console.log(query);
+    if (query === "") {
+        res.send(JSON.stringify(directory));
+    }
+    else {
+        let results = {Posts: []};
+        posts.forEach((post) => {
+            let titleMatch = post.title.toLowerCase().indexOf(query);
+            let contentMatch = post.content.toLowerCase().indexOf(query);
+            let posterMatch = post.poster.toLowerCase().indexOf(query);
+            if (!((titleMatch === -1) && (contentMatch === -1) && (posterMatch === -1))) {
+                results.Posts.push(post);
+            }
+        });
+        const responseData = JSON.stringify(results);
+        res.send(responseData);
+    }
 });
 
 server.post("/uploadPost", (req, res) => {

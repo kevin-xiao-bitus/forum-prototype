@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import "./createOverlay.scss";
 
-function CreatePostOverlay( { url} ) {
+function CreatePostOverlay( { url, setShow} ) {
     const title = useRef();
     const content = useRef();
     const titleErrors = useRef();
@@ -15,7 +15,7 @@ function CreatePostOverlay( { url} ) {
                 time: date.getTime(),
                 poster: "anon",
                 content: content.current.value
-            }
+            };
             fetch(url + "/uploadPost", {
                 method: "POST",
                 mode: "cors",
@@ -23,7 +23,8 @@ function CreatePostOverlay( { url} ) {
                 body: JSON.stringify(data)
             }).catch(err => {
                 if (err) console.log(err);
-            })
+            });
+            setShow();
         }
     }
 
@@ -58,7 +59,9 @@ function CreatePostOverlay( { url} ) {
                     <p ref={contentErrors} className="create-post-helper-text"></p>
                 </div>
                 <div className="submit-post-button-container">
-                    <button className="post-button" onClick={uploadPost}>Post</button>
+                    <button className="post-button" onClick={() => {
+                        uploadPost();
+                    }}>Post</button>
                 </div>
             </div>
         </div>
