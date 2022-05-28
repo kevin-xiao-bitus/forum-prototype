@@ -1,0 +1,8 @@
+1) change "go back" button to a svg left arrow
+2) add user login feature
+3) implement usernames into posts
+4) finish viewpost frontend (comment, reply, edit etc)
+5) add the corresponding features from 4) to backend
+6) add loading states and displays for each i.e. (loading, not found, can't reach server
+7) add polling for content if cannot connect to server
+8) add "time since posted" feature

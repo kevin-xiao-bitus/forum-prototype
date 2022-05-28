@@ -31,12 +31,14 @@ server.post("/getPosts", (req, res) => {
     }
 });
 
+const previewLength = 1500;
+
 server.post("/uploadPost", (req, res) => {
     const data = req.body;
     data.id = directory.idCount++;
     let previewPost = {...data};
-    if (previewPost.content.length > 1000) {
-        previewPost.content = previewPost.content.substring(0, 1200);
+    if (previewPost.content.length > previewLength) {
+        previewPost.content = previewPost.content.substring(0, previewLength);
     }
     directory.Posts.push(previewPost);
 
