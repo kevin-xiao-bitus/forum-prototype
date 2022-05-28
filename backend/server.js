@@ -13,7 +13,6 @@ server.use(cors());
 server.post("/getPosts", (req, res) => {
     const query = req.body.keyword;
     const posts = directory.Posts;
-    console.log(query);
     if (query === "") {
         res.send(JSON.stringify(directory));
     }
@@ -34,10 +33,25 @@ server.post("/getPosts", (req, res) => {
 
 server.post("/uploadPost", (req, res) => {
     const data = req.body;
+    data.id = directory.idCount++;
     directory.Posts.push(data);
     fs.writeFile("./directory.json", JSON.stringify(directory), err => {
         if (err) {
             console.log(err);
+        }
+        else {
+            /*TODO
+            Make dir with post id
+            have a reply json file
+            store images
+            */
+            fs.mkdir(`./posts/${data.id}`, (err) => {
+                if (err) console.log(err);
+            });
+            // TODO: make file;
+            fs.appendFile(`./posts/${data.id}/replies.json`,"{}", (err) => {
+                if (err) console.log(err);
+            });
         }
     })
 })

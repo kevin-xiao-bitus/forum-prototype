@@ -84,10 +84,7 @@ $bordius: 11px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.load-post-button:hover {
-    cursor: pointer;
+    z-index: 3;
 }
 
 .pb-slidein {
@@ -120,7 +117,7 @@ $bordius: 11px;
 
 .button-trigger {
     position: absolute;
-    z-index: 3;
+    z-index: 2;
     height: 100%;
     width: 50px;
     right: 0px;
