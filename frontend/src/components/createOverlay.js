@@ -11,7 +11,7 @@ function CreatePostOverlay( { url, setShow} ) {
         if (checkErrors()) {
             const date = new Date();
             const data = {
-                title: title.current.value,
+                title: title.current.value.trim(),
                 time: date.getTime(),
                 poster: "anon",
                 content: content.current.value

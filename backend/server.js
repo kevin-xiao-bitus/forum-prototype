@@ -34,27 +34,40 @@ server.post("/getPosts", (req, res) => {
 server.post("/uploadPost", (req, res) => {
     const data = req.body;
     data.id = directory.idCount++;
-    directory.Posts.push(data);
-    fs.writeFile("./directory.json", JSON.stringify(directory), err => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            /*TODO
-            Make dir with post id
-            have a reply json file
-            store images
-            */
-            fs.mkdir(`./posts/${data.id}`, (err) => {
-                if (err) console.log(err);
-            });
-            // TODO: make file;
-            fs.appendFile(`./posts/${data.id}/replies.json`,"{}", (err) => {
-                if (err) console.log(err);
-            });
-        }
-    })
+    let previewPost = {...data};
+    if (previewPost.content.length > 1000) {
+        previewPost.content = previewPost.content.substring(0, 1200);
+    }
+    directory.Posts.push(previewPost);
+
+    let fullPost = {...data};
+    fullPost.replies = [];
+
+    async function setupFiles () {
+        fs.writeFileSync("./directory.json", JSON.stringify(directory), e => {
+            if (e) console.log(e)});
+        fs.mkdirSync(`./posts/${data.id}`, e => {
+            if (e) console.log(e)});
+        fs.writeFileSync(`./posts/${data.id}/post.json`, JSON.stringify(fullPost), e => {
+            if (e) console.log(e)});
+    }
+    setupFiles();
 })
+
+server.post("/getPostById", (req, res) => {
+    const id = req.body.id;
+    const post = fs.readFileSync(`./posts/${id}/post.json`, {
+        encoding: "utf-8"
+    });
+    if (post) {
+        const responseData = post;
+        res.send(responseData);
+    }
+    else {
+        console.log("not found");
+        res.sendStatus(500);
+    }
+});
 
 http.listen(port, () => {
     console.log("Server listening on port", port);
