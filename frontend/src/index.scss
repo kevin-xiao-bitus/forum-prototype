@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.content-box {
+  overflow-x: wrap;
+  max-width: 100%;
+  white-space: pre-wrap;
+}

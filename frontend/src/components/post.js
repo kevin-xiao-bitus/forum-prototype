@@ -36,7 +36,9 @@ function Post ({post}) {
                 <p className="post-date">{dateToString(post.time)}</p>
             </div>
             <div className="post-content-container" ref={contentContainer}>
-                <p className="post-content" ref={content}>{post.content}</p>
+                <pre>
+                    <p className="post-content content-box" ref={content}>{post.content}</p>
+                </pre>
                 {(overflowing) ? (<div className="overflow-fade"></div>) : <></>}
             </div>
                 <Link to={"/view/" + post.id}>
