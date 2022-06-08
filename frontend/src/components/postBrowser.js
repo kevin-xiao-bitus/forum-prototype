@@ -1,8 +1,8 @@
 import { useEffect, useReducer, useRef, useState } from "react";
-import Post from "./components/post";
+import Post from "./post";
 import "./postBrowser.scss";
-import CreatePostOverlay from "./components/createOverlay";
-import AccountButton from "./components/account";
+import CreatePostOverlay from "./createOverlay";
+import AccountButton from "./account";
 
 const url = "http://localhost:3001";
 
@@ -39,7 +39,7 @@ function PostBrowser() {
             return response.json();
         })
         .then((data) => {
-            setPosts(data.Posts);
+            setPosts(data);
         })
         .catch(err => {
             if (err) {
